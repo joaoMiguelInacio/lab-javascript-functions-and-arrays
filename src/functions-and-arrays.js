@@ -160,7 +160,7 @@ const wordsCount = [
 ];
 
 function howManyTimes(array, word) { 
-  let object = {}
+  let object = {};
   array.forEach(function(word) {object[word] = (object[word] || 0) + 1; })
   if (word in object) {
     return object[word];
@@ -169,7 +169,7 @@ function howManyTimes(array, word) {
   }
 } 
 
-// Bonus - Iteration #8  PASSED but not ready
+// Bonus - Iteration #8 Product of adjacent numbers READY
 const matrix = [
   [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
   [49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0],
@@ -193,14 +193,58 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct(array) {
-    if (array[1][1] === 1) {
+/* Enough to pass:
+
+function greatestProduct(arr) {
+  if (array[1][1] === 1) {
     return 1;
-    } else if (array[1][1] === 2) {
+  } else if (array[1][1] === 2) {
     return 16;
-    }
+  } 
 }
 
+*/
+
+function greatestProduct(arr) {
+  let max = 0, result;
+  let n = arr[0].length;
+  for (let i = 0; i < n; i++) //iterates horizontaly
+  { 
+    for (let j = 0; j < n; j++) //iterates vertically
+    {
+      if ((j - 3) >= 0) { //checks the maximum product horizontally
+      result = arr[i][j] * arr[i][j - 1] * arr[i][j - 2] * arr[i][j - 3];;
+        if (max < result) 
+            max = result;
+      } if ((i - 3) >= 0) { //chekcs the maximum product vertically
+        result = arr[i][j] * arr[i - 1][j] * arr[i - 2][j] * arr[i - 3][j];
+          if (max < result) 
+              max = result;
+      }
+    }
+  } return max;
+}
+
+
+// Bonus - Iteration #8.1 Product of diagonals  READY
+
+function greatestProductOfDiagonals(arr) {
+  let max = 0, result;
+  let n = arr[0].length;
+  for (let i = 0; i < n; i++) { //iterates horizontaly
+    for (let j = 0; j < n; j++) { //iterates vertically
+      if ((i - 3) >= 0 && (j - 3) >= 0) { //checks the maximum product diagonally, going down (j-) and right (i-)
+          result = arr[i][j] * arr[i - 1][j - 1] * arr[i - 2][j - 2] * arr[i - 3][j - 3];
+          if (max < result)
+              max = result;
+      } if ((i - 3) >= 0 && (j - 3) <= 0) { //checks the maximum product diagonally, going up (j+) and right (i-)
+          result = arr[i][j] * arr[i - 1][j + 1] * arr[i - 2][j + 2] * arr[i - 3][j + 3];
+          if (max < result)
+              max = result;
+      }
+    } 
+  } return max;
+}
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
