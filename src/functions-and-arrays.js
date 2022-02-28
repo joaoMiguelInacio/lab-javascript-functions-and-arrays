@@ -57,8 +57,6 @@ function sum(array) {
   return (sum);
 }
 
-// Iteration #4: Calculate the average 
-
 // Level 1: Array of numbers READY
 
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
@@ -84,15 +82,27 @@ function averageWordLength(arr) {
     return null;
   } else {
     return (newArrayChars/arr.length);
-  }
+  } 
 }
 
-// Bonus - Iteration #4.1 INCOMPLETE
+// Bonus - Iteration #4.1: A generic avg() function READY
 
 function avg(array) {
   if (array.length == 0) {
     return null;
-   }
+  } let sumStringChars = 0;
+    let sumOfNumbers = 0;
+    for(let i = 0; i < array.length; i++) {
+      if  (typeof array[i] === 'object' || typeof array[i] === 'array') {
+        throw new Error ("Unsupported data type sir or ma'am");
+      } else if  (typeof array[i] === 'string') {
+        sumStringChars += array[i].length;
+      } else {
+        sumOfNumbers += array[i];
+      }
+    } let totalValueOfItems = sumStringChars + sumOfNumbers;
+      let result = (totalValueOfItems / array.length);
+      return Number(result.toFixed(2));
 }
 
 // Iteration #5: Unique arrays READY
