@@ -42,7 +42,7 @@ function sumNumbers(array) {
 // Bonus - Iteration #3.1 READY
 
 function sum(array) {
-  if (array.length == 0) {
+  if (array.length === 0) {
     return 0;
   } let sum = 0;
     for(let i = 0; i < array.length; i++) {
@@ -54,7 +54,7 @@ function sum(array) {
       sum += array[i];
     }
   }  
-  return (sum);
+  return sum;
 }
 
 // Level 1: Array of numbers READY
@@ -87,8 +87,10 @@ function averageWordLength(arr) {
 
 // Bonus - Iteration #4.1: A generic avg() function READY
 
+/*
+
 function avg(array) {
-  if (array.length == 0) {
+  if (array.length === 0) {
     return null;
   } let sumStringChars = 0;
     let sumOfNumbers = 0;
@@ -103,6 +105,16 @@ function avg(array) {
     } let totalValueOfItems = sumStringChars + sumOfNumbers;
       let result = (totalValueOfItems / array.length);
       return Number(result.toFixed(2));
+}
+
+*/
+
+function avg(array) {
+  if (array.length === 0) {
+    return null;
+  } 
+  let result = (sum(array) / array.length);
+    return Number(result.toFixed(2));
 }
 
 // Iteration #5: Unique arrays READY
@@ -193,6 +205,7 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
+
 /* Enough to pass:
 
 function greatestProduct(arr) {
@@ -208,10 +221,8 @@ function greatestProduct(arr) {
 function greatestProduct(arr) {
   let max = 0, result;
   let n = arr[0].length;
-  for (let i = 0; i < n; i++) //iterates horizontaly
-  { 
-    for (let j = 0; j < n; j++) //iterates vertically
-    {
+  for (let i = 0; i < n; i++) {   //iterates horizontaly
+    for (let j = 0; j < n; j++) {  //iterates vertically
       if ((j - 3) >= 0) { //checks the maximum product horizontally
       result = arr[i][j] * arr[i][j - 1] * arr[i][j - 2] * arr[i][j - 3];;
         if (max < result) 
@@ -233,11 +244,11 @@ function greatestProductOfDiagonals(arr) {
   let n = arr[0].length;
   for (let i = 0; i < n; i++) { //iterates horizontaly
     for (let j = 0; j < n; j++) { //iterates vertically
-      if ((i - 3) >= 0 && (j - 3) >= 0) { //checks the maximum product diagonally, going down (j-) and right (i-)
+      if ((i - 3) >= 0 && (j - 3) >= 0) { //checks the maximum product diagonally, going up (j-) and right (i-)
           result = arr[i][j] * arr[i - 1][j - 1] * arr[i - 2][j - 2] * arr[i - 3][j - 3];
           if (max < result)
               max = result;
-      } if ((i - 3) >= 0 && (j - 3) <= 0) { //checks the maximum product diagonally, going up (j+) and right (i-)
+      } if ((i - 3) >= 0 && (j - 3) <= 0) { //checks the maximum product diagonally, going down (j+) and right (i-)
           result = arr[i][j] * arr[i - 1][j + 1] * arr[i - 2][j + 2] * arr[i - 3][j + 3];
           if (max < result)
               max = result;
@@ -245,6 +256,7 @@ function greatestProductOfDiagonals(arr) {
     } 
   } return max;
 }
+
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
