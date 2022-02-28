@@ -244,11 +244,11 @@ function greatestProductOfDiagonals(arr) {
   let n = arr[0].length;
   for (let i = 0; i < n; i++) { //iterates horizontaly
     for (let j = 0; j < n; j++) { //iterates vertically
-      if ((i - 3) >= 0 && (j - 3) >= 0) { //checks the maximum product diagonally, going up (j-) and right (i-)
+      if ((i - 3) >= 0 && (j - 3) >= 0) { //checks the maximum product diagonally, going up (j-) and left (i-)
           result = arr[i][j] * arr[i - 1][j - 1] * arr[i - 2][j - 2] * arr[i - 3][j - 3];
           if (max < result)
               max = result;
-      } if ((i - 3) >= 0 && (j - 3) <= 0) { //checks the maximum product diagonally, going down (j+) and right (i-)
+      } if ((i - 3) >= 0 && (j - 3) <= 0) { //checks the maximum product diagonally, going down (j+) and left (i-)
           result = arr[i][j] * arr[i - 1][j + 1] * arr[i - 2][j + 2] * arr[i - 3][j + 3];
           if (max < result)
               max = result;
